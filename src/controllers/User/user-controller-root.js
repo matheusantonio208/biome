@@ -27,11 +27,13 @@ class UserController {
 
   async store(req, res) {
     try {
-      if (await User.checkDuplicateEmail(email)) {
+      const newUser = newUserObject(req.body)
+
+      if (await User.checkDuplicateEmail(newUser.email)) {
         return res.status(400).json({ error_msg: 'Email already register' });
       }
 
-      const user = await User.createUser(newUserObject(req.body));
+      const user = await User.createUser(newUser);
 
       if (user) {
         await JobQueue.add(JobWelcomeNewUser.key, user);

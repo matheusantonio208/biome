@@ -17,7 +17,7 @@ describe('teste template', () => {
   });
 
   it('the database is properly configured', async () => {
-    const response = await factory.create('example');
+    const response = await factory.create('User');
     expect(response).toHaveProperty('_id');
   });
 });

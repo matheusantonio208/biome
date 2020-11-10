@@ -6,10 +6,11 @@ import {loggedUserObject} from './user-object.js';
 class SessionController {
   async store(req, res) {
     try {
-      const isLogged = await User.login(loggedUserObject(req.body));
+      const newLoginUser = loggedUserObject(req.body);
+      const isLogged = await User.login(newLoginUser.email, newLoginUser.password_hash);
 
       if (isLogged) {
-        const user = await User.checkEmail(loggedUserObject(req.body).email);
+        const user = await User.checkEmail(newLoginUser.email);
 
         const userAccessToken = {
           user: { id: user.id, name: user.first_name },
