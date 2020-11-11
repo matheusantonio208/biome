@@ -20,7 +20,7 @@ class UserController {
         });
       }
 
-      const user = await User.getUserById(userId);
+      const user = await User.getById(userId);
 
       return res.json(user);
     } catch (error) {
@@ -37,7 +37,7 @@ class UserController {
         return res.status(400).json({ error_msg: 'Email already register' });
       }
 
-      const createdUser = await User.createUser(newUser);
+      const createdUser = await User.create(newUser);
 
       if (createdUser) {
         await JobQueue.add(JobWelcomeNewUser.key, createdUser);
@@ -60,7 +60,7 @@ class UserController {
         });
       }
 
-      const updatedUser = await User.updateUserById(
+      const updatedUser = await User.updateById(
         userId,
         updateUserObject(req.body),
       );
@@ -88,8 +88,8 @@ class UserController {
           error_msg: 'The user must be logged in to delete his account',
         });
       }
-      const userFound = await User.getUserById(userId);
-      const isDeleted = await User.deleteUserById(userId);
+      const userFound = await User.getById(userId);
+      const isDeleted = await User.deleteById(userId);
 
       if (isDeleted) {
         await JobQueue.add(JobDeletedUser.key, userFound);

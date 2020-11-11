@@ -3,18 +3,16 @@ import { Router } from 'express';
 import isAuth from '#middlewares/auth-middle.js';
 
 import Session from '#controllers/User/session-controller.js';
-import User from '#controllers/User/user-controller-root.js';
+import User from '#controllers/User/user-controller.js';
+import Activity from '#controllers/Activity/activity-controller.js';
 
 class Routes {
   constructor() {
     this.route = new Router();
 
-    this.route.get('/', (req, res) => {
-      return res.status(200).json({ success_msg: 'Hello!' });
-    });
-
     this.user('/user');
     this.session('/session');
+    this.activity('/activity');
   }
 
   user(baseRoute) {
@@ -26,6 +24,14 @@ class Routes {
 
   session(baseRoute) {
     this.route.post(`${baseRoute}/login`, Session.store);
+  }
+
+  activity(baseRoute) {
+    this.route.get(`${baseRoute}/:activityId`, isAuth, Activity.index);
+    this.route.delete(`${baseRoute}/:activityId`, isAuth, Activity.delete);
+    this.route.get(`${baseRoute}/`, isAuth, Activity.show);
+    this.route.post(`${baseRoute}/`, isAuth, Activity.store);
+    this.route.put(`${baseRoute}/`, isAuth, Activity.update);
   }
 }
 

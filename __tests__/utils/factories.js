@@ -1,8 +1,10 @@
 import { factory } from 'factory-girl';
+import mongoose from 'mongoose';
 import faker from 'faker';
 
 
 import User from '#schemas/User.js';
+import Activity from '#schemas/Activity.js';
 
 factory.define('User', User, {
   first_name: faker.name.firstName(),
@@ -18,5 +20,19 @@ factory.define('User', User, {
   date_last_login: faker.date.past(),
   locale_last_login: `${faker.address.latitude()};${faker.address.longitude()}`,
 });
+
+factory.define('Activity', Activity, {
+  _id_owner_user: mongoose.Types.ObjectId,
+  name: faker.lorem.word(),
+  date_start: faker.date.past(),
+  date_end: faker.date.future(),
+  execution_time: [{
+    moment_start: 480,
+    moment_end: 660,
+  }],
+  days_week: [1, 3, 5],
+  pillar: 'body',
+  status: 'active',
+})
 
 export default factory;

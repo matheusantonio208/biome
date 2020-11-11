@@ -1,7 +1,7 @@
 import User from '#schemas/User.js';
 
 class UserRepository extends Error {
-  async getUserById(userId) {
+  async getById(userId) {
     const userFoundById = await User.findById(userId);
 
     if (userFoundById) return userFoundById;
@@ -9,7 +9,7 @@ class UserRepository extends Error {
     throw new Error(`Could not find user with id ${userId}`);
   }
 
-  async createUser(userData) {
+  async create(userData) {
     const newUser = new User(userData);
 
     if (newUser) {
@@ -20,7 +20,7 @@ class UserRepository extends Error {
     throw new Error(`Could not create user ${userData.user_name}`);
   }
 
-  async updateUserById(userId, userData) {
+  async updateById(userId, userData) {
     const updatedUser = await User.findByIdAndUpdate(userId, userData);
 
     if (updatedUser) return updatedUser;
@@ -28,7 +28,7 @@ class UserRepository extends Error {
     throw new Error(`Could not update user ${userId}`);
   }
 
-  async deleteUserById(userId) {
+  async deleteById(userId) {
     if (await User.findByIdAndDelete(userId)) return true;
 
     throw new Error(`It was not possible to delete the user ${userId}`);
