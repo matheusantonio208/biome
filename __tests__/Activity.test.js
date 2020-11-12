@@ -11,21 +11,28 @@ describe('Activity', () => {
   });
 
   it('The user must be able to get your owner activity', async () => {
-    const user = await factory.create('User');
+    const createdUser = await factory.create('User');
+    const userId = createdUser._id;
 
-    const userReq = await request(server).post('/session/login').send({
-      email: user.email,
-      password_hash: user.password_hash,
+    const loggedUser = await request(server).post('/session/login').send({
+      email: createdUser.email,
+      password_hash: createdUser.password_hash,
     });
 
-    const { token } = userReq.body;
+    const { token } = loggedUser.body;
 
-    const activity = await factory.create('Activity');
+    const activityData = await factory.attrs('Activity');
 
-    const activityReq = await request(server)
-      .get(`/activity/${activity._id}`)
+    const createdActivity = await request(server)
+      .post(`/activity`)
+      .send({ ...activityData, id_owner_user: userId })
+      .set('Authorization', `Bearer ${token}`);
+    const activityId = createdActivity.body._id;
+
+    const gettedActivity = await request(server)
+      .get(`/activity/${activityId}`)
       .set('Authorization', `Bearer ${token}`);
 
-    expect(activityReq.status).toBe(201);
+    expect(gettedActivity.status).toBe(201);
   });
 });

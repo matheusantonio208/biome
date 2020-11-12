@@ -22,7 +22,7 @@ factory.define('User', User, {
 });
 
 factory.define('Activity', Activity, {
-  _id_owner_user: mongoose.Types.ObjectId,
+  id_owner_user: mongoose.Types.ObjectId,
   name: faker.lorem.word(),
   date_start: faker.date.past(),
   date_end: faker.date.future(),

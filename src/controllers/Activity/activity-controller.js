@@ -33,6 +33,7 @@ class ActivityController {
   async store(req, res) {
     try {
       const { userId } = req;
+
       const activityData = activityValueObject(req.body);
       const newActivity = await Activity.create(userId, activityData);
 

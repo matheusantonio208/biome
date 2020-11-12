@@ -21,7 +21,6 @@
     "yarn.lock": true,
     "config": true,
     "lib": true,
-    "__tests__/User.test.js": true,
     "__tests__/coverage": true,
     ".vscode": true,
     "node_modules": true,
@@ -35,7 +34,6 @@
     "atlantjs.json": true,
     "jest.config.js": true,
     "nodemon.json": true,
-    "__tests__": true,
     "src/views": true
   },
   "cSpell.ignoreWords": [
