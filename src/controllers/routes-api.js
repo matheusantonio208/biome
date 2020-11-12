@@ -2,9 +2,9 @@ import { Router } from 'express';
 
 import isAuth from '#middlewares/auth-middle.js';
 
+import Activity from '#controllers/Activity/activity-controller.js';
 import Session from '#controllers/User/session-controller.js';
 import User from '#controllers/User/user-controller.js';
-import Activity from '#controllers/Activity/activity-controller.js';
 
 class Routes {
   constructor() {
@@ -28,10 +28,10 @@ class Routes {
 
   activity(baseRoute) {
     this.route.get(`${baseRoute}/:activityId`, isAuth, Activity.index);
-    this.route.delete(`${baseRoute}/:activityId`, isAuth, Activity.delete);
     this.route.get(`${baseRoute}/`, isAuth, Activity.show);
     this.route.post(`${baseRoute}/`, isAuth, Activity.store);
-    this.route.put(`${baseRoute}/`, isAuth, Activity.update);
+    this.route.put(`${baseRoute}/:activityId`, isAuth, Activity.update);
+    this.route.delete(`${baseRoute}/:activityId`, isAuth, Activity.delete);
   }
 }
 

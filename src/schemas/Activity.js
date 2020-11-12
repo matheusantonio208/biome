@@ -1,4 +1,4 @@
-import { Schema,  model } from 'mongoose';
+import { Schema, model } from 'mongoose';
 
 const schema = new Schema(
   {
@@ -36,15 +36,7 @@ const schema = new Schema(
     days_week: [
       {
         type: [Number],
-        enum: [
-          0,
-          1,
-          2,
-          3,
-          4,
-          5,
-          6,
-        ],
+        enum: [0, 1, 2, 3, 4, 5, 6],
       },
     ],
     pillar: {
@@ -74,12 +66,8 @@ const schema = new Schema(
     status: {
       type: String,
       lowercase: true,
-      enum: [
-        'planned',
-        'active',
-        'disabled',
-      ]
-    }
+      enum: ['planned', 'active', 'disabled'],
+    },
   },
   { timestamps: true },
 );
