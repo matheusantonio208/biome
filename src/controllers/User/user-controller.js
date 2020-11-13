@@ -22,9 +22,9 @@ class UserController {
 
       const user = await User.getById(userId);
 
-      return res.json(user);
+      return res.status(200).json(user);
     } catch (error) {
-      return res.status(401).json({ error_msg: error.toString() });
+      return res.status(400).json({ error_msg: error.toString() });
     }
   }
 
@@ -43,9 +43,9 @@ class UserController {
         await JobQueue.add(JobWelcomeNewUser.key, createdUser);
       }
 
-      return res.json(createdUser);
+      return res.status(201).json(createdUser);
     } catch (error) {
-      return res.status(401).json({ error_msg: error.toString() });
+      return res.status(400).json({ error_msg: error.toString() });
     }
   }
 
@@ -73,9 +73,9 @@ class UserController {
         await JobQueue.add(JobUpdatedUserEmail.key, updatedUser);
       }
 
-      return res.json(updatedUser);
+      return res.status(200).json(updatedUser);
     } catch (error) {
-      return res.status(401).json({ error_msg: error.toString() });
+      return res.status(400).json({ error_msg: error.toString() });
     }
   }
 
@@ -97,7 +97,7 @@ class UserController {
 
       return res.status(200).json({ success_msg: 'User has been deleted' });
     } catch (error) {
-      return res.status(401).json({ error_msg: error.toString() });
+      return res.status(400).json({ error_msg: error.toString() });
     }
   }
 }

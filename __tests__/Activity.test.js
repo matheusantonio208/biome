@@ -1,37 +1,37 @@
 import request from 'supertest';
 import server from '#config/server/api-config.js';
+import Mongoose from 'mongoose';
 
-import factory from './utils/factories.js';
+const User = require('./functions/user-functions.js');
+const Activity = require('./functions/activity-functions.js');
 
 describe('Activity', () => {
-  it('The user must be able to create activity in the application', async () => {
-    const response = await factory.create('Activity');
+  beforeEach(async () => {
+    await Mongoose.connection.dropDatabase();
+  });
 
-    expect(response).toHaveProperty('_id');
+  it('The user must be able to create activity in the application', async () => {
+    const createdUser = await User.createUser();
+    const loggedUser = await User.loginUser(createdUser);
+    const createdActivity = await Activity.createActivity(
+      createdUser.body._id,
+      loggedUser.body.token,
+    );
+
+    expect(createdActivity.status).toBe(201);
   });
 
   it('The user must be able to get your owner activity', async () => {
-    const createdUser = await factory.create('User');
-    const userId = createdUser._id;
-
-    const loggedUser = await request(server).post('/session/login').send({
-      email: createdUser.email,
-      password_hash: createdUser.password_hash,
-    });
-
-    const { token } = loggedUser.body;
-
-    const activityData = await factory.attrs('Activity');
-
-    const createdActivity = await request(server)
-      .post(`/activity`)
-      .send({ ...activityData, id_owner_user: userId })
-      .set('Authorization', `Bearer ${token}`);
-    const activityId = createdActivity.body._id;
+    const createdUser = await User.createUser();
+    const loggedUser = await User.loginUser(createdUser);
+    const createdActivity = await Activity.createActivity(
+      createdUser.body._id,
+      loggedUser.body.token,
+    );
 
     const gettedActivity = await request(server)
-      .get(`/activity/${activityId}`)
-      .set('Authorization', `Bearer ${token}`);
+      .get(`/activity/${createdActivity.body._id}`)
+      .set('Authorization', `Bearer ${loggedUser.body.token}`);
 
     expect(gettedActivity.status).toBe(201);
   });

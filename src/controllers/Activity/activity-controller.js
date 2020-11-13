@@ -14,7 +14,7 @@ class ActivityController {
 
       return res.status(201).json(activity);
     } catch (error) {
-      return res.status(401).json({ error_msg: `${error}` });
+      return res.status(400).json({ error_msg: `${error}` });
     }
   }
 
@@ -26,7 +26,7 @@ class ActivityController {
 
       return res.status(201).json(activities);
     } catch (error) {
-      return res.status(401).json({ error_msg: `Error! ${error}` });
+      return res.status(400).json({ error_msg: `${error}` });
     }
   }
 
@@ -39,7 +39,7 @@ class ActivityController {
 
       return res.status(201).json(newActivity);
     } catch (error) {
-      return res.status(401).json({ error_msg: `${error}` });
+      return res.status(400).json({ error_msg: `${error}` });
     }
   }
 
@@ -57,7 +57,7 @@ class ActivityController {
 
       return res.status(201).json(updatedActivity);
     } catch (error) {
-      return res.status(401).json({ error_msg: `${error}` });
+      return res.status(400).json({ error_msg: `${error}` });
     }
   }
 
@@ -70,7 +70,7 @@ class ActivityController {
 
       return res.status(201).json({ success_msg: `Delete Success!` });
     } catch (error) {
-      return res.status(401).json({ error_msg: `${error}` });
+      return res.status(400).json({ error_msg: `${error}` });
     }
   }
 }

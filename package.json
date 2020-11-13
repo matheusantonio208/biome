@@ -71,5 +71,8 @@
     "nodemon": "^2.0.4",
     "prettier": "^2.1.2",
     "supertest": "^5.0.0"
+  },
+  "jest": {
+    "testEnvironment": "node"
   }
 }
