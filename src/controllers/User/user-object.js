@@ -27,30 +27,20 @@ export function newUserObject({
   last_name,
   email,
   password_hash,
-  photo_profile,
   date_birth,
   phone_number,
   country,
   state,
-  group,
-  date_last_login,
-  locale_last_login,
-  account_status,
 }) {
   return {
     first_name,
     last_name,
     email,
     password_hash,
-    photo_profile,
     date_birth,
     phone_number,
     country,
     state,
-    group,
-    date_last_login,
-    locale_last_login,
-    account_status,
   };
 }
 

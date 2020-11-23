@@ -11,7 +11,7 @@ import User from './user-repository.js';
 class UserController {
   async show(req, res) {
     try {
-      const userId = req.params.userId || req.body.user_id;
+      const { userId } = req.params;
 
       if (userId !== req.userId) {
         return res.status(401).json({
@@ -51,7 +51,7 @@ class UserController {
 
   async update(req, res) {
     try {
-      const userId = req.params.userId || req.body.user_id;
+      const { userId } = req.params;
 
       if (userId !== req.userId) {
         return res.status(401).json({
@@ -81,7 +81,7 @@ class UserController {
 
   async delete(req, res) {
     try {
-      const userId = req.params.userId || req.body.user_id;
+      const { userId } = req.params;
 
       if (userId !== req.userId) {
         return res.status(401).json({

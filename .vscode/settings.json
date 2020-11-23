@@ -1,37 +1,5 @@
 {
-  "files.exclude": {
-    "src/views/pages/Landing": true,
-    "src/views/pages/ProjectManager": true,
-    "src/views/pages/Setupstation": true,
-    ".eslintignore": true,
-    ".dockerignore": true,
-    ".editorconfig": true,
-    ".eslintrc.json": true,
-    ".env.example": true,
-    ".gitignore": true,
-    ".prettierrc": true,
-    ".todo.example": true,
-    "docker-compose.yml": true,
-    "jsconfig.json": true,
-    "makefile": true,
-    "webpack.config.js": true,
-    "README.md": true,
-    "yarn.lock": true,
-    "config": true,
-    "lib": true,
-    "__tests__/coverage": true,
-    ".vscode": true,
-    "node_modules": true,
-    "src/jobs": true,
-    "src/middlewares": true,
-    "src/schemas/User.js": true,
-    "src/views/emails": true,
-    ".env": true,
-    ".env.test": true,
-    "atlantjs.json": true,
-    "nodemon.json": true,
-    "src/views": true
-  },
+  "files.exclude": {},
   "cSpell.ignoreWords": [
     "getted"
   ]

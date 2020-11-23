@@ -40,10 +40,12 @@ const userSchema = new Mongoose.Schema({
   group: {
     type: String,
     required: true,
+    default: 'free-plan',
     enum: ['admin', 'pro-plan', 'free-plan'],
   },
   date_last_login: {
     type: String,
+    default: new Date().now,
   },
   locale_last_login: {
     type: String,
