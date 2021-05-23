@@ -6,35 +6,70 @@ const schema = new Schema(
       type: Schema.Types.ObjectId,
       required: true,
     },
+    id_card: {
+      type: Schema.Types.ObjectId,
+    },
+    id_wallet: {
+      type: Schema.Types.ObjectId,
+    },
+    type:{
+      type: String,
+      enum: ['expense','income', 'transfer'],
+      required: true
+    },
+    transfer_from_wallet:{
+      type: Schema.Types.ObjectId,
+    },
+    transfer_to_wallet:{
+      type: Schema.Types.ObjectId,
+    },
     name: {
       type: String,
       required: true,
     },
-    payday: {
-      type: Date,
-      required: true,
+    description:{
+      type: String
     },
-    date_start: {
-      type: Date,
-    },
-    date_end: {
-      type: Date,
+    locale: {
+      type: String,
     },
     value: {
       type: Number,
       required: true,
     },
-    locale: {
-      type: String,
-    },
     payment_method: {
       type: String,
     },
-    card: {
-      type: String
+    date_start: {
+      type: Date,
+    },
+    payday: {
+      type: Date,
+    },
+    repeat_every: {
+      type: String,
+    },
+    date_end: {
+      type: Date,
     },
     category: {
       type: String,
-    }
+    },
+    group_items: [{
+      name: {
+        type: String,
+      },
+      value: {
+        type: Number,
+      }
+    }],
+    status:{
+      type: String,
+      enum: ['paid','planned','late'],
+      default: 'planned',
+      required: true
+    },
   }
 )
+
+export default model('transactions', schema);

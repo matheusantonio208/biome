@@ -12,5 +12,13 @@ const schema = new Schema(
     value: {
       type: Number,
       required: true,
-    }
+      default: 0,
+    },
+    coin:{
+      type: String,
+      enum: ['BRL','EUR','USA'],
+      required: true
+  }
   })
+
+  export default model('wallets', schema);

@@ -5,6 +5,7 @@ import isAuth from '#middlewares/auth-middle.js';
 import Activity from '#controllers/Activity/activity-controller.js';
 import Session from '#controllers/User/session-controller.js';
 import User from '#controllers/User/user-controller.js';
+import Wallet from '#controllers/Finance/Wallet/wallet-controller.js';
 
 class Routes {
   constructor() {
@@ -13,6 +14,7 @@ class Routes {
     this.user('/user');
     this.session('/session');
     this.activity('/activity');
+    this.wallet('/finance/wallet')
   }
 
   user(baseRoute) {
@@ -32,6 +34,10 @@ class Routes {
     this.route.post(`${baseRoute}/`, isAuth, Activity.store);
     this.route.put(`${baseRoute}/:activityId`, isAuth, Activity.update);
     this.route.delete(`${baseRoute}/:activityId`, isAuth, Activity.delete);
+  }
+
+  wallet(baseRoute) {
+    this.route.get(`${baseRoute}:/walletId`, isAuth, Wallet.index);
   }
 }
 

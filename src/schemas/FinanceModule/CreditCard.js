@@ -9,11 +9,29 @@ const schema = new Schema(
     type: String,
     required: true,
   },
-  value_credit: {
+  number:{
     type: Number,
-    required: true
+    required:true
+  },
+  flag:{
+      type: String,
+      required: true
+  },
+  cvc_code:{
+      type: Number,
+      required: true
+  },
+  expiry_date:{
+      type: Date,
+      required: true
+  },
+  value_limit:{
+      type: Number,
+      required: true
   },
   transactions: [{
     type: Schema.Types.ObjectId,
   }]
 })
+
+export default model('creditCards', schema);

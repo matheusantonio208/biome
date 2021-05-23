@@ -72,4 +72,4 @@ const schema = new Schema(
   { timestamps: true },
 );
 
-export default model('activity', schema);
+export default model('activities', schema);
