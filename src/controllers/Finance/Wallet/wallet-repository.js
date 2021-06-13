@@ -1,4 +1,4 @@
-import Wallet from '#schemas/Wallet.js';
+import Wallet from '#schemas/Finance/Wallet.js';
 
 class WalletRepository {
   async getOne({_id}) {

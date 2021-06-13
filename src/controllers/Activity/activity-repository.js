@@ -1,4 +1,4 @@
-import Activity from '#schemas/Activity.js';
+import Activity from '#schemas/LifeStyle/Activity.js';
 
 class ActivityRepository {
   async getOneById(userIdLogged, activityId) {

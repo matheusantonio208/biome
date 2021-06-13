@@ -2,10 +2,13 @@ import { Router } from 'express';
 
 import isAuth from '#middlewares/auth-middle.js';
 
-import Activity from '#controllers/Activity/activity-controller.js';
 import Session from '#controllers/User/session-controller.js';
 import User from '#controllers/User/user-controller.js';
+
+import Activity from '#controllers/Activity/activity-controller.js';
+
 import Wallet from '#controllers/Finance/Wallet/wallet-controller.js';
+import Transaction from '#controllers/Finance/Transaction/transaction-controller.js';
 
 class Routes {
   constructor() {
@@ -15,6 +18,7 @@ class Routes {
     this.session('/session');
     this.activity('/activity');
     this.wallet('/finance/wallet')
+    this.transaction('/finance/transaction')
   }
 
   user(baseRoute) {
@@ -38,6 +42,12 @@ class Routes {
 
   wallet(baseRoute) {
     this.route.get(`${baseRoute}:/walletId`, isAuth, Wallet.index);
+    this.route.post(`${baseRoute}`, isAuth, Wallet.store);
+  }
+
+  transaction(baseRoute) {
+    this.route.post(`${baseRoute}`, isAuth, Transaction.store);
+    this.route.get(`${baseRoute}`, isAuth, Transaction.show);
   }
 }
 

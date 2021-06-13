@@ -1,6 +1,5 @@
-export function wallet({id_owner_user, name, value, coin}){
+export function wallet({ name, value, coin}){
   return ({
-    id_owner_user,
     name,
     value,
     coin

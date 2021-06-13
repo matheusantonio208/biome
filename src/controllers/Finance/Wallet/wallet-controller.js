@@ -15,9 +15,9 @@ class WalletController {
   async store(req, res) {
     try {
       const newWallet = wallet(req.body);
-      await Wallet.create(newWallet);
+      await Wallet.create({id_owner_user: req.userId,...newWallet});
 
-      return res.status(201).json(createdUser);
+      return res.status(201).json(newWallet);
     } catch (error) {
       return res.status(400).json({ error_msg: error.toString() });
     }

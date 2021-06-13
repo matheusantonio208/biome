@@ -17,9 +17,6 @@ const schema = new Schema(
       enum: ['expense','income', 'transfer'],
       required: true
     },
-    transfer_from_wallet:{
-      type: Schema.Types.ObjectId,
-    },
     transfer_to_wallet:{
       type: Schema.Types.ObjectId,
     },
@@ -39,6 +36,7 @@ const schema = new Schema(
     },
     payment_method: {
       type: String,
+      enum: ['credit','debt'],
     },
     date_start: {
       type: Date,

@@ -28,10 +28,7 @@ const schema = new Schema(
   value_limit:{
       type: Number,
       required: true
-  },
-  transactions: [{
-    type: Schema.Types.ObjectId,
-  }]
+  }
 })
 
 export default model('creditCards', schema);

@@ -21,9 +21,6 @@
   ],
   "license": "MIT",
   "scripts": {
-    "install-engines": "npm install -g pnpm; git init; git add .; git commit -m 'init project'; git remote add origin <url>; git branch -M main; git push -u origin main",
-    "setup": "npm install -g pnpm; pnpm install",
-    "clean-core-engine": "rm -f -r ./.dockerignore ./.editorconfig ./.eslintignore ./config ./.eslintrc.json ./.prettierrc ./babel.config.json ./jsconfig.json ./todo.example ./.env.example; pnpm uninstall -D @babel/cli @babel/core @babel/node @babel/plugin-transform-modules-commonjs @babel/preset-env babel-eslint babel-plugin-root-import eslint eslint-config-airbnb eslint-config-airbnb-base eslint-config-prettier eslint-import-resolver-babel-plugin-root-import eslint-plugin-import eslint-plugin-import-helpers eslint-plugin-prettier prettier; pnpm uninstall -S dotenv;",
     "build": "babel src -s -D -d dist --presets @babel/preset-env",
     "prod": "node dist/server.js",
     "dev": "nodemon -w config/server/server-connect.js --exec \"babel-node config/server/server-connect.js --presets @babel/preset-env\"",

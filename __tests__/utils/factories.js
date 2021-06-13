@@ -4,7 +4,7 @@ import faker from 'faker';
 
 
 import User from '#schemas/User.js';
-import Activity from '#schemas/Activity.js';
+import Activity from '#schemas/LifeStyle/Activity.js';
 
 factory.define('User', User, {
   first_name: faker.name.firstName(),
