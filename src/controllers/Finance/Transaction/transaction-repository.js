@@ -3,9 +3,9 @@ import Transaction from '#schemas/Finance/Transaction.js';
 class TransactionRepository {
   async getByIds(transactionsID) {
     const transactions = transactionsID.map(async (id) => {
-      await Transaction.find({_id: id});
-    })
-    if(transactions) return transactions;
+      await Transaction.find({ _id: id });
+    });
+    if (transactions) return transactions;
 
     throw new Error(`Error to get ${transactionsID}`);
   }
@@ -13,16 +13,12 @@ class TransactionRepository {
   async create(transactionData) {
     const newTransaction = new Transaction(transactionData);
 
-    if(newTransaction) {
+    if (newTransaction) {
       await newTransaction.save();
       return newTransaction;
     }
 
     throw new Error(`Could not create transaction ${transactionData.name}`);
-  }
-
-  async deleteByIds(transactionsID){
-
   }
 }
 

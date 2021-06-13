@@ -2,13 +2,11 @@ import { Router } from 'express';
 
 import isAuth from '#middlewares/auth-middle.js';
 
+import Activity from '#controllers/Activity/activity-controller.js';
+import Transaction from '#controllers/Finance/Transaction/transaction-controller.js';
+import Wallet from '#controllers/Finance/Wallet/wallet-controller.js';
 import Session from '#controllers/User/session-controller.js';
 import User from '#controllers/User/user-controller.js';
-
-import Activity from '#controllers/Activity/activity-controller.js';
-
-import Wallet from '#controllers/Finance/Wallet/wallet-controller.js';
-import Transaction from '#controllers/Finance/Transaction/transaction-controller.js';
 
 class Routes {
   constructor() {
@@ -17,8 +15,7 @@ class Routes {
     this.user('/user');
     this.session('/session');
     this.activity('/activity');
-    this.wallet('/finance/wallet')
-    this.transaction('/finance/transaction')
+    this.finance('/finance');
   }
 
   user(baseRoute) {
@@ -40,14 +37,15 @@ class Routes {
     this.route.delete(`${baseRoute}/:activityId`, isAuth, Activity.delete);
   }
 
-  wallet(baseRoute) {
-    this.route.get(`${baseRoute}:/walletId`, isAuth, Wallet.index);
-    this.route.post(`${baseRoute}`, isAuth, Wallet.store);
-  }
+  finance(baseRoute) {
+    this.route.get(`${baseRoute}/wallet/`, isAuth, Wallet.show);
+    this.route.get(`${baseRoute}/wallet/:walletId`, isAuth, Wallet.index);
+    this.route.post(`${baseRoute}/wallet/`, isAuth, Wallet.store);
+    this.route.put(`${baseRoute}/wallet/:walletId`, isAuth, Wallet.update);
+    this.route.delete(`${baseRoute}/wallet/:walletId`, isAuth, Wallet.delete);
 
-  transaction(baseRoute) {
-    this.route.post(`${baseRoute}`, isAuth, Transaction.store);
-    this.route.get(`${baseRoute}`, isAuth, Transaction.show);
+    this.route.post(`${baseRoute}/transaction`, isAuth, Transaction.store);
+    this.route.get(`${baseRoute}/transaction`, isAuth, Transaction.show);
   }
 }
 

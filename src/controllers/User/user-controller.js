@@ -1,11 +1,10 @@
 import JobQueue from '#lib/JobQueue.js';
 
-import JobDeletedUser from '#jobs/emails/DeletedUser.js';
-import JobUpdatedUserEmail from '#jobs/emails/UpdatedUserEmail.js';
-import JobUpdatedUserPassword from '#jobs/emails/UpdatedUserPassword.js';
-import JobWelcomeNewUser from '#jobs/emails/WelcomeNewUser.js';
+import JobDeletedUser from '#jobs/emails/User/DeletedUser.js';
+import JobUpdatedUserEmail from '#jobs/emails/User/UpdatedUserEmail.js';
+import JobUpdatedUserPassword from '#jobs/emails/User/UpdatedUserPassword.js';
+import JobWelcomeNewUser from '#jobs/emails/User/WelcomeNewUser.js';
 
-import { updateUserObject, newUserObject } from './user-object.js';
 import User from './user-repository.js';
 
 class UserController {
@@ -30,7 +29,7 @@ class UserController {
 
   async store(req, res) {
     try {
-      const newUser = newUserObject(req.body);
+      const newUser = req.body;
       const isDuplicateEmail = await User.checkDuplicateEmail(newUser.email);
 
       if (isDuplicateEmail) {
@@ -60,10 +59,7 @@ class UserController {
         });
       }
 
-      const updatedUser = await User.updateById(
-        userId,
-        updateUserObject(req.body),
-      );
+      const updatedUser = await User.updateById(userId, req.body);
 
       if (updatedUser && req.body.password_hash) {
         await JobQueue.add(JobUpdatedUserPassword.key, updatedUser);

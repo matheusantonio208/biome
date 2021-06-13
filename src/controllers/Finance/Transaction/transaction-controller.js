@@ -1,20 +1,22 @@
- /*
-  * [x] Criar Transação
-  * [x] Capturar 1 ou várias transações
-  * [ ] Capturar Todas as Transações de 1 carteira
-  * [ ] Atualizar 1 transação
-  * [ ] Deletar 1 ou várias transações
-  */
+/*
+ * [x] Criar Transação
+ * [x] Capturar 1 ou várias transações
+ * [ ] Capturar Todas as Transações de 1 carteira
+ * [ ] Atualizar 1 transação
+ * [ ] Deletar 1 ou várias transações
+ */
 import Transaction from './transaction-repository.js';
-import { walletTransactionObject } from './transaction-object.js';
 
 class TransactionController {
   async store(req, res) {
     try {
-      const { userId } = req
+      const { userId } = req;
 
-      const transactionData = walletTransactionObject({ ...req.body, id_owner_user: userId });
-      const newTransaction = await Transaction.create( transactionData );
+      const transactionData = {
+        ...req.body,
+        id_owner_user: userId,
+      };
+      const newTransaction = await Transaction.create(transactionData);
 
       return res.status(201).json(newTransaction);
     } catch (error) {
@@ -27,7 +29,11 @@ class TransactionController {
       const ids = req.query.id;
       const transactionsFind = await Transaction.getByIds(ids);
 
-      return res.status(201).json({ success_msg: `Success! Your object is ${await Promise.all(transactionsFind)}` });
+      return res.status(201).json({
+        success_msg: `Success! Your object is ${await Promise.all(
+          transactionsFind,
+        )}`,
+      });
     } catch (error) {
       return res.status(401).json({ error_msg: `${error}` });
     }
