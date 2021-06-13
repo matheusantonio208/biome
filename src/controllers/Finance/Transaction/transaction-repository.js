@@ -1,13 +1,29 @@
 import Transaction from '#schemas/Finance/Transaction.js';
 
 class TransactionRepository {
-  async getByIds(transactionsID) {
-    const transactions = transactionsID.map(async (id) => {
-      await Transaction.find({ _id: id });
-    });
-    if (transactions) return transactions;
+  async getByUserAndOrWalletId(userId, walletId) {
+    let transactions;
 
-    throw new Error(`Error to get ${transactionsID}`);
+    if (walletId) {
+      transactions = await Transaction.find({
+        id_owner_user: userId,
+        id_wallet: walletId,
+      });
+      return transactions;
+    }
+
+    transactions = await Transaction.find({
+      id_owner_user: userId,
+    });
+    return transactions;
+  }
+
+  async getOne(transactionId) {
+    const transaction = await Transaction.findOne({ _id: transactionId });
+
+    if (transaction) return transaction;
+
+    throw new Error(`Error to get ${transactionId}`);
   }
 
   async create(transactionData) {
@@ -19,6 +35,25 @@ class TransactionRepository {
     }
 
     throw new Error(`Could not create transaction ${transactionData.name}`);
+  }
+
+  async updateById(transactionId, transactionData) {
+    const transaction = await Transaction.findByIdAndUpdate(
+      transactionId,
+      transactionData,
+      { new: true },
+    );
+
+    if (transaction) return transaction;
+
+    throw new Error(`Could not update transaction ${transactionId}`);
+  }
+
+  async deleteById(transactionId) {
+    if (await Transaction.findByIdAndDelete(transactionId)) {
+      return { success_msg: 'Deleted!' };
+    }
+    throw new Error(`Could not delete transaction ${transactionId}`);
   }
 }
 

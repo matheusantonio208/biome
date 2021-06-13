@@ -29,11 +29,11 @@ class WalletRepository {
   }
 
   async updateById(walletID, walletData) {
-    if (await Wallet.findByIdAndUpdate(walletID, walletData)) {
-      const updatedWallet = await Wallet.findOne({ _id: walletID });
-      if (updatedWallet) return updatedWallet;
-    }
+    const updatedWallet = await Wallet.findByIdAndUpdate(walletID, walletData, {
+      new: true,
+    });
 
+    if (updatedWallet) return updatedWallet;
     throw new Error(`Could not update wallet ${walletID}`);
   }
 

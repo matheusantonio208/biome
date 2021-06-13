@@ -21,7 +21,9 @@ class UserRepository extends Error {
   }
 
   async updateById(userId, userData) {
-    const updatedUser = await User.findByIdAndUpdate(userId, userData);
+    const updatedUser = await User.findByIdAndUpdate(userId, userData, {
+      new: true,
+    });
 
     if (updatedUser) return updatedUser;
 

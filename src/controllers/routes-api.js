@@ -45,7 +45,27 @@ class Routes {
     this.route.delete(`${baseRoute}/wallet/:walletId`, isAuth, Wallet.delete);
 
     this.route.post(`${baseRoute}/transaction`, isAuth, Transaction.store);
-    this.route.get(`${baseRoute}/transaction`, isAuth, Transaction.show);
+    this.route.delete(
+      `${baseRoute}/transaction/:transactionId`,
+      isAuth,
+      Transaction.delete,
+    );
+    this.route.put(
+      `${baseRoute}/transaction/:transactionId`,
+      isAuth,
+      Transaction.update,
+    );
+    this.route.get(`${baseRoute}/transaction/user`, isAuth, Transaction.show);
+    this.route.get(
+      `${baseRoute}/transaction/wallet/:walletId`,
+      isAuth,
+      Transaction.show,
+    );
+    this.route.get(
+      `${baseRoute}/transaction/:transactionId`,
+      isAuth,
+      Transaction.index,
+    );
   }
 }
 

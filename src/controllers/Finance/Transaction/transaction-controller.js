@@ -1,10 +1,3 @@
-/*
- * [x] Criar Transação
- * [x] Capturar 1 ou várias transações
- * [ ] Capturar Todas as Transações de 1 carteira
- * [ ] Atualizar 1 transação
- * [ ] Deletar 1 ou várias transações
- */
 import Transaction from './transaction-repository.js';
 
 class TransactionController {
@@ -26,14 +19,54 @@ class TransactionController {
 
   async show(req, res) {
     try {
-      const ids = req.query.id;
-      const transactionsFind = await Transaction.getByIds(ids);
+      const { userId } = req;
+      const { walletId } = req.params;
 
-      return res.status(201).json({
-        success_msg: `Success! Your object is ${await Promise.all(
-          transactionsFind,
-        )}`,
-      });
+      const transactions = await Transaction.getByUserAndOrWalletId(
+        userId,
+        walletId,
+      );
+
+      return res.status(201).json(transactions);
+    } catch (error) {
+      return res.status(401).json({ error_msg: `${error}` });
+    }
+  }
+
+  async index(req, res) {
+    try {
+      const { transactionId } = req.params;
+      const transactionFound = await Transaction.getOne(transactionId);
+
+      return res.status(201).json(transactionFound);
+    } catch (error) {
+      return res.status(401).json({ error_msg: `${error}` });
+    }
+  }
+
+  async update(req, res) {
+    try {
+      const { transactionId } = req.params;
+      const transactionData = req.body;
+
+      const updatedTransaction = await Transaction.updateById(
+        transactionId,
+        transactionData,
+      );
+
+      return res.status(201).json(updatedTransaction);
+    } catch (error) {
+      return res.status(401).json({ error_msg: `${error}` });
+    }
+  }
+
+  async delete(req, res) {
+    try {
+      const { transactionId } = req.params;
+
+      const trasactionDeleted = await Transaction.deleteById(transactionId);
+
+      return res.status(201).json(trasactionDeleted);
     } catch (error) {
       return res.status(401).json({ error_msg: `${error}` });
     }
@@ -41,16 +74,3 @@ class TransactionController {
 }
 
 export default new TransactionController();
-
-/*
-async index(req, res) {
-    try {
-      const { _id : transactionID } = walletTransactionObject(req.body);
-      const transactionFind = await Transaction.get(transactionID);
-
-      return res.status(201).json({ success_msg: `Success! Your object is ${transactionFind}` });
-    } catch (error) {
-      return res.status(401).json({ error_msg: `${error}` });
-    }
-  }
-*/
