@@ -7,11 +7,11 @@ class UpdatedUserPassword {
 
   async handle({ user }) {
     await Mail.sendEmail({
-      to: `${user.first_name} <${user.email}>`,
-      subject: `${user.first_name} sua senha foi atualizada!`,
+      to: `${user.name} <${user.email}>`,
+      subject: `${user.name} sua senha foi atualizada!`,
       template: 'UpdatedUserPassword',
       context: {
-        user_name: user.first_name,
+        user_name: user.name,
       },
     });
   }

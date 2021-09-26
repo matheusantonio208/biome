@@ -7,11 +7,11 @@ class WelcomeNewUser {
 
   async handle({ data }) {
     await Mail.sendEmail({
-      to: `${data.first_name} <${data.email}>`,
-      subject: `Bem vindo ${data.first_name}!`,
+      to: `${data.name} <${data.email}>`,
+      subject: `Bem vindo ${data.name}!`,
       template: 'WelcomeNewUser',
       context: {
-        user_name: data.first_name,
+        user_name: data.name,
       },
     });
   }

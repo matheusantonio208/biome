@@ -7,8 +7,7 @@ import User from '#schemas/User.js';
 import Activity from '#schemas/LifeStyle/Activity.js';
 
 factory.define('User', User, {
-  first_name: faker.name.firstName(),
-  last_name: faker.name.lastName(),
+  name: faker.name.firstName(),
   email: faker.internet.email(),
   password_hash: faker.internet.password(),
   photo_profile: faker.image.people(),

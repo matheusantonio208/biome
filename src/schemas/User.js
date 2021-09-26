@@ -1,11 +1,7 @@
 import Mongoose from 'mongoose';
 
 const userSchema = new Mongoose.Schema({
-  first_name: {
-    type: String,
-    required: true,
-  },
-  last_name: {
+  name: {
     type: String,
     required: true,
   },
@@ -26,16 +22,12 @@ const userSchema = new Mongoose.Schema({
   },
   phone_number: {
     type: String,
-    required: true,
-    unique: true,
   },
   country: {
     type: String,
-    required: true,
   },
   state: {
     type: String,
-    required: true,
   },
   group: {
     type: String,

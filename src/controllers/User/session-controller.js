@@ -18,9 +18,9 @@ class SessionController {
         const user = await User.checkEmail(loginUser.email);
 
         const userAccessToken = {
-          user: { id: user.id, name: user.first_name },
+          user: { id: user.id, name: user.name },
           token: Jwt.sign(
-            { id: user.id, name: user.first_name },
+            { id: user.id, name: user.name },
             authConfig.secret_key,
             {
               expiresIn: authConfig.expiresIn,

@@ -7,11 +7,11 @@ class DeletedUser {
 
   async handle({ data }) {
     await Mail.sendEmail({
-      to: `${data.first_name} <${data.email}>`,
-      subject: `${data.first_name} sua conta foi deletada!`,
+      to: `${data.name} <${data.email}>`,
+      subject: `${data.name} sua conta foi deletada!`,
       template: 'DeletedUser',
       context: {
-        user_name: data.first_name,
+        user_name: data.name,
       },
     });
   }

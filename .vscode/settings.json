@@ -1,35 +1,5 @@
 {
-  "files.exclude": {
-    "node_modules": true,
-    "src\\controllers\\Activity": true,
-    "src\\middlewares": true,
-    "src\\schemas\\LifeStyle": true,
-    "src\\views\\emails": true,
-    ".dockerignore": true,
-    ".editorconfig": true,
-    ".eslintignore": true,
-    ".eslintrc.json": true,
-    ".gitignore": true,
-    ".prettierrc": true,
-    ".todo.example": true,
-    "atlantjs.json": true,
-    "docker-compose.yml": true,
-    "jest.config.js": true,
-    "jsconfig.json": true,
-    "makefile": true,
-    "nodemon.json": true,
-    "package.json": true,
-    "pnpm-lock.yaml": true,
-    "README.md": true,
-    "src\\views": true,
-    ".env": true,
-    "__tests__": true,
-    "config": true,
-    "lib": true,
-    "src\\jobs\\emails\\User": true,
-    "src\\jobs": true,
-    "babel.config.json": true
-  },
+  "files.exclude": {},
   "cSpell.ignoreWords": [
     "getted"
   ]
