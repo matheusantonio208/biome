@@ -1,1 +1,2 @@
-web: node config/server/server-connect.js
+web: npm build
+web: npm prod

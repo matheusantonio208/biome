@@ -21,8 +21,8 @@
   ],
   "license": "MIT",
   "scripts": {
-    "build": "babel src -s -D -d dist --presets @babel/preset-env",
-    "prod": "node config/server/server-connect.js",
+    "build": "babel src lib config -s -D -d dist --presets @babel/preset-env",
+    "prod": "node dist/server/server-connect.js",
     "dev": "nodemon -w config/server/server-connect.js --exec \"babel-node config/server/server-connect.js --presets @babel/preset-env\"",
     "test": "NODE_ENV=test jest --detectOpenHandles",
     "redis": "nodemon -w config/redisDB/redis-connection.js --exec \"babel-node config/redisDB/redis-connection.js --presets @babel/preset-env\""
