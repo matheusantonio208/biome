@@ -1,31 +1,57 @@
-version: '3.8'
+version: '3'
+
 services:
-  nodeJs:
+  wallace:
     image: node:latest
-    container_name: nodeJs
+    container_name: wallace
+    build:
+      context: .
+      dockerfile: Dockerfile
     restart: always
     env_file:
       - .env
-    ports: ${SERVER_PORT}:${SERVER_PORT}
+    ports:
+      - ${SERVER_PORT}:${SERVER_PORT}
+    expose:
+      - '4000'
     volumes:
-      - .:/usr/src/app
-    working_dir: /usr/src/app
-    command: yarn start
-    logging:
-      driver: 'json-file'
-      options:
-        max-size: '10m'
-        max-files: '5'
+      - .:/home/node/app
+    working_dir: /home/node/app
+    command: npm run dev --poll
+    tty: true
+    depends_on:
+      - redisDB
+    links:
+      - redisDB
+    networks:
+      - production-network
 
-  db-mongo:
+  ## MONGO DB ##
+  mongoDB:
     image: mongo
     container_name: mongoDB
     restart: always
-    depends_on:
-      - nodeJS
     environment:
       MONGO_INITDB_DATABASE: ${MONGO_DB_NAME}
       MONGO_INITDB_ROOT_USERNAME: ${MONGO_USER}
       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
     ports:
-      - ${MONGO_PORT}:27017
+      - ${MONGO_PORT}:${MONGO_PORT}
+    networks:
+      - production-network
+
+  ## REDIS DB ###
+  redisDB:
+    image: redis:alpine
+    container_name: redisDB
+    restart: always
+    ports:
+      - '6379:6379'
+    expose:
+      - '6379'
+    networks:
+      - production-network
+
+networks:
+  production-network:
+    driver: bridge
