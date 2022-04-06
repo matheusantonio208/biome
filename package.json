@@ -1,10 +1,9 @@
 {
-  "name": "core-engine",
+  "name": "wallace",
   "description": "A Node.js project",
   "keywords": [
-    "email",
-    "machine learning",
-    "ai"
+    "finance",
+    "organizer"
   ],
   "version": "1.0.0",
   "main": "index.js",
@@ -21,14 +20,11 @@
   ],
   "license": "MIT",
   "scripts": {
-    "build": "babel src lib config -s -D -d dist --presets @babel/preset-env",
     "prod": "node dist/server/server-connect.js",
     "dev": "nodemon -w config/server/server-connect.js --exec \"babel-node config/server/server-connect.js --presets @babel/preset-env\"",
     "test": "NODE_ENV=test jest --detectOpenHandles",
-    "redis": "nodemon -w config/redisDB/redis-connection.js --exec \"babel-node config/redisDB/redis-connection.js --presets @babel/preset-env\""
-  },
-  "engines": {
-    "node": "^14.0.0"
+    "redis": "nodemon -w config/redisDB/redis-connection.js --exec \"babel-node config/redisDB/redis-connection.js --presets @babel/preset-env\"",
+    "redis:test": "NODE_ENV=test nodemon config/redisDB/redis-connection.js"
   },
   "dependencies": {
     "bee-queue": "^1.3.1",
@@ -65,12 +61,29 @@
     "eslint-plugin-prettier": "^3.1.4",
     "factory-girl": "^5.0.4",
     "faker": "^5.1.0",
+    "git-commit-msg-linter": "^4.1.1",
+    "husky": "^7.0.4",
     "jest": "^26.5.2",
+    "lint-staged": "^12.3.7",
     "nodemon": "^2.0.4",
     "prettier": "^2.1.2",
-    "supertest": "^5.0.0"
+    "supertest": "^5.0.0",
+    "typescript": "^4.6.3"
   },
   "jest": {
     "testEnvironment": "node"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "prepare-commit-msg": "exec < /dev/tty || true"
+    }
+  },
+  "lint-staged": {
+    "*.ts": [
+      "eslint --cache --fix",
+      "prettier --write",
+      "git add ."
+    ]
   }
 }
