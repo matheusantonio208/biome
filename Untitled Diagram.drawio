@@ -1,9 +1,30 @@
-<mxfile host="app.diagrams.net" modified="2022-05-05T00:08:04.407Z" agent="5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.41 Safari/537.36" etag="p1KYu911ViEw4dSjZzSI" version="18.0.0" type="github">
+<mxfile host="app.diagrams.net" modified="2022-05-05T00:51:29.261Z" agent="5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.41 Safari/537.36" etag="91NEWLVaL26SlsFVor-H" version="18.0.0" type="github">
   <diagram id="iAbyK8pKXisrJIql5Mq7" name="Page-1">
-    <mxGraphModel dx="1990" dy="712" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1990" dy="1881" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="l1szmI_GFWI639Pi0zfL-68" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="7" y="-42.5" width="823" height="632.5" as="geometry" />
+        </mxCell>
+        <mxCell id="l1szmI_GFWI639Pi0zfL-66" value="" style="whiteSpace=wrap;html=1;fontSize=22;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="l1szmI_GFWI639Pi0zfL-68">
+          <mxGeometry width="823" height="632.5" as="geometry" />
+        </mxCell>
+        <mxCell id="l1szmI_GFWI639Pi0zfL-67" value="Auth Module" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=22;fontStyle=1" vertex="1" parent="l1szmI_GFWI639Pi0zfL-68">
+          <mxGeometry x="203.92268690349945" y="12.549603174603174" width="415.1546261930011" height="30.11904761904762" as="geometry" />
+        </mxCell>
+        <mxCell id="l1szmI_GFWI639Pi0zfL-65" value="" style="group;fillColor=#FF8000;strokeColor=#b85450;" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="1045" y="400" width="885" height="460" as="geometry" />
+        </mxCell>
+        <mxCell id="l1szmI_GFWI639Pi0zfL-63" value="" style="whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="l1szmI_GFWI639Pi0zfL-65">
+          <mxGeometry width="885" height="460" as="geometry" />
+        </mxCell>
+        <mxCell id="l1szmI_GFWI639Pi0zfL-64" value="Journeys Tour" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=22;fontStyle=1" vertex="1" parent="l1szmI_GFWI639Pi0zfL-65">
+          <mxGeometry x="235.67934782608697" y="10" width="413.6413043478261" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="l1szmI_GFWI639Pi0zfL-71" value="" style="rounded=1;whiteSpace=wrap;html=1;fontSize=22;fillColor=#FF9933;" vertex="1" parent="l1szmI_GFWI639Pi0zfL-65">
+          <mxGeometry x="15" y="90" width="845" height="120" as="geometry" />
+        </mxCell>
         <mxCell id="l1szmI_GFWI639Pi0zfL-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="l1szmI_GFWI639Pi0zfL-1" target="l1szmI_GFWI639Pi0zfL-2">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
@@ -182,6 +203,9 @@
         </mxCell>
         <mxCell id="l1szmI_GFWI639Pi0zfL-58" value="createMonthlyRevenue" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
           <mxGeometry x="1500" y="502.5" width="150" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="l1szmI_GFWI639Pi0zfL-62" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="l1szmI_GFWI639Pi0zfL-60" target="l1szmI_GFWI639Pi0zfL-38">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="l1szmI_GFWI639Pi0zfL-60" value="createMonthlyExpenses" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
           <mxGeometry x="1730" y="502.5" width="150" height="85" as="geometry" />
