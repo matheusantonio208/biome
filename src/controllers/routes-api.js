@@ -12,6 +12,10 @@ class Routes {
   constructor() {
     this.route = new Router();
 
+    this.route.get('/', (req, res) => {
+      return res.status(200).json({ success_msng: 'Online API' });
+    });
+
     this.session('/session');
     this.user('/user');
     this.finance('/finance');
