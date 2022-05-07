@@ -1,5 +1,5 @@
 {
-  "name": "core-engine",
+  "name": "biome",
   "description": "A Node.js project",
   "keywords": [
     "email",
@@ -51,7 +51,7 @@
     "@types/jest": "^26.0.14",
     "babel-eslint": "^10.1.0",
     "babel-jest": "^26.5.2",
-    "babel-plugin-root-import": "^6.5.0",
+    "babel-plugin-root-import": "6.5.0",
     "eslint": "^7.10.0",
     "eslint-config-airbnb": "^18.2.0",
     "eslint-config-airbnb-base": "^14.2.0",
