@@ -87,6 +87,12 @@ class ActivityRepository {
       throw new Error(`No activity found with id ${activityId}`);
     }
 
+    console.log({ checkOwnerUser: { activity } });
+
+    console.log({
+      checkOwnerUser: { userIdLogged, id_owner_user: activity.id_owner_user },
+    });
+
     const isOwnerUser = String(userIdLogged) === String(activity.id_owner_user);
 
     if (isOwnerUser) return true;

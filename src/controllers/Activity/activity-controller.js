@@ -9,7 +9,7 @@ class ActivityController {
     try {
       const { userId } = req;
       const { activityId } = req.params;
-
+      console.log({ index: { userId, activityId } });
       const activity = await Activity.getOneById(userId, activityId);
 
       return res.status(201).json(activity);
@@ -48,12 +48,10 @@ class ActivityController {
       const { userId } = req;
       const { activityId } = req.params;
 
-      const activityData = activityUpdateObject({
+      const updatedActivity = await Activity.update(userId, {
         ...req.body,
         _id: activityId,
       });
-
-      const updatedActivity = await Activity.update(userId, activityData);
 
       return res.status(201).json(updatedActivity);
     } catch (error) {

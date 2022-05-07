@@ -12,10 +12,10 @@ class Routes {
   constructor() {
     this.route = new Router();
 
-    this.user('/user');
     this.session('/session');
-    this.activity('/activity');
+    this.user('/user');
     this.finance('/finance');
+    this.activity('/activity');
   }
 
   user(baseRoute) {

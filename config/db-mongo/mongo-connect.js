@@ -4,7 +4,7 @@ import mongoose from 'mongoose';
 class MongoConnect {
   start() {
     mongoose.connect(
-      `mongodb://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@${process.env.MONGO_HOST}:${process.env.MONGO_PORT}/${process.env.MONGO_DB_NAME}?authSource=admin`,
+      `mongodb+srv://admin:admin@cluster0.zbs2e.mongodb.net/biome?retryWrites=true&w=majority`,
       {
         useNewUrlParser: true,
         useFindAndModify: false,

@@ -3,7 +3,7 @@ import server from '#config/server/api-config.js';
 
 class Server {
   constructor() {
-    const port = this.normalizePort(process.env.PORT || '3000');
+    const port = this.normalizePort(process.env.SERVER_PORT || '3000');
 
     server.set('port', port);
     server.on('error', this.onError);

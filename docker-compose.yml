@@ -28,7 +28,5 @@ services:
     image: redis:alpine
     container_name: redisDB
     restart: always
-    depends_on:
-      - nodeJS
     ports:
       - ${REDIS_PORT}:6379
