@@ -9,12 +9,21 @@ class WalletRepository {
     throw new Error(`Error to get wallets of user ${userID}`);
   }
 
-  async getOne(walletID) {
+  async getOneById(walletID) {
     const walletFound = await Wallet.findOne({ _id: walletID });
 
     if (walletFound) return walletFound;
 
     throw new Error(`Error to get ${walletID}`);
+  }
+
+  async haveWalletName(walletName) {
+    const walletFound = await Wallet.find({ name: walletName });
+
+    if (walletFound.length > 0) {
+      throw new Error(`There is already a wallet with the name ${walletName}`);
+    }
+    return false;
   }
 
   async create(walletData) {

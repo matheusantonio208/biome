@@ -1,10 +1,3 @@
-/*
- * [x] Listar Carteiras
- * [x] Detalhar Carteira
- * [x] Criar Carteira
- * [x] Atualizar Carteira
- * [x] Excluir Carteira
- */
 import Wallet from './wallet-repository.js';
 
 class WalletController {
@@ -22,7 +15,7 @@ class WalletController {
   async index(req, res) {
     try {
       const { walletId } = req.params;
-      const walletFound = await Wallet.getOne(walletId);
+      const walletFound = await Wallet.getOneById(walletId);
 
       return res.status(201).json(walletFound);
     } catch (error) {
@@ -34,6 +27,8 @@ class WalletController {
     try {
       const newWallet = req.body;
       const { userId } = req;
+
+      await Wallet.haveWalletName(newWallet.name);
 
       const walletCreated = await Wallet.create({
         ...newWallet,

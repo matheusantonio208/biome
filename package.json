@@ -23,7 +23,7 @@
   "scripts": {
     "build": "babel src lib config -s -D -d dist --presets @babel/preset-env",
     "prod": "node dist/server/server-connect.js",
-    "dev": "nodemon -w config/server/server-connect.js --exec \"babel-node config/server/server-connect.js --presets @babel/preset-env\"",
+    "start:dev": "nodemon -w config/server/server-connect.js --exec \"babel-node config/server/server-connect.js --presets @babel/preset-env\"",
     "test": "NODE_ENV=test jest --detectOpenHandles",
     "redis": "node config/redisDB/redis-connection.js",
     "redis-test": "NODE_ENV=test nodemon config/redisDB/redis-connection.js"

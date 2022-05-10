@@ -4,7 +4,7 @@ import mongoose from 'mongoose';
 class MongoConnect {
   start() {
     mongoose.connect(
-      `mongodb+srv://admin:admin@cluster0.zbs2e.mongodb.net/biome?retryWrites=true&w=majority`,
+      `mongodb+srv://admin:admin@cluster0.tkz0t.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`,
       {
         useNewUrlParser: true,
         useFindAndModify: false,
